@@ -160,14 +160,14 @@ const ChatbotWidget = () => {
             {/* QUICK REPLIES */}
             {showQuickReplies && !loading && (
               <div className="chatbot-quick-replies">
-                <button onClick={() => handleSendMessage("Sell Property")}>
-                  Sell property
+                <button onClick={() => handleSendMessage("About Everything Ug")}>
+                  About Everything Ug
                 </button>
-                <button onClick={() => handleSendMessage("Buy property")}>
-                  Buy Property
+                <button onClick={() => handleSendMessage("Create an Iternary")}>
+                  Create an Iternary
                 </button>
-                <button onClick={() => handleSendMessage("Get A quote")}>
-                  Get a Quote
+                <button onClick={() => handleSendMessage("Tailor Your Holiday")}>
+                  Tailor Your Holiday
                 </button>
               </div>
             )}
