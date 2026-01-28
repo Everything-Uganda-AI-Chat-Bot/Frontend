@@ -5,6 +5,8 @@ import Attach from "../../assets/paperclip.png";
 import Collapse from "../../assets/down.png";
 import Max from "../../assets/maximise.png";
 
+const API_BASE_URL = "http://127.0.0.1:5000";
+
 type Message = {
   id: string;
   type: "user" | "bot";
@@ -78,17 +80,39 @@ const ChatbotWidget = () => {
     setShowQuickReplies(false);
     setLoading(true);
 
-    // Fake API delay
-    setTimeout(() => {
-      const botReply = "Coming soon";
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          question: outgoingMessage,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch response");
+      }
+
+      const data = await response.json();
+
       addMessage({
         id: Math.random().toString(),
         type: "bot",
-        text: botReply,
+        text: data.answer,
         createdAt: Date.now(),
       });
-      setLoading(false);
-    }, 1500);
+      } catch (error) {
+        addMessage({
+          id: Math.random().toString(),
+          type: "bot",
+          text: "Sorry, something went wrong. Please try again.",
+          createdAt: Date.now(),
+        });
+      } finally {
+        setLoading(false);
+      }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
