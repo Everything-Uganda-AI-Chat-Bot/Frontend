@@ -104,7 +104,7 @@ const ChatbotWidget = () => {
         text: data.answer,
         createdAt: Date.now(),
       });
-      } catch (error) {
+      } catch{
         addMessage({
           id: Math.random().toString(),
           type: "bot",
