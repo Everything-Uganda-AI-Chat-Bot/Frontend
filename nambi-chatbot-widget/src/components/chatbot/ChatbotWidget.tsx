@@ -5,7 +5,8 @@ import Attach from "../../assets/paperclip.png";
 import Collapse from "../../assets/down.png";
 import Max from "../../assets/maximise.png";
 
-const API_BASE_URL = "http://127.0.0.1:5000";
+// const API_BASE_URL = "http://127.0.0.1:5000";
+const API_BASE_URL = "https://backend-api-nambi.onrender.com/";
 
 type Message = {
   id: string;
