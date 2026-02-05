@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 import "./ChatbotWidget.css";
 import Logo from "../../assets/Nambi.png";
 import Attach from "../../assets/paperclip.png";
@@ -163,7 +164,11 @@ const ChatbotWidget = () => {
             {messages.map((msg) => (
               <div key={msg.id} className={`chatbot-message ${msg.type}`}>
                 <div className="chatbot-bubble">
-                  {msg.text && <p>{msg.text}</p>}
+                  {msg.text && (
+                    <div className="chatbot-markdown">
+                      <ReactMarkdown>{msg.text}</ReactMarkdown> 
+                    </div>
+                  )}
 
                   {msg.attachment && msg.attachment.isImage && (
                     <img
